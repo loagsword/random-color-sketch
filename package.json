@@ -1,19 +1,29 @@
 {
-  "name": "react-paint-app",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@loagsword/react-paint-app",
+  "version": "0.1",
+  "license": "MIT",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "now-build": "react-scripts build && mv build dist"  },
-  "author": "@loagsword",
-  "license": "MIT",
+    "now-build": "react-scripts build && mv build dist"
+  },
   "dependencies": {
     "randomcolor": "^0.5.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  }
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
