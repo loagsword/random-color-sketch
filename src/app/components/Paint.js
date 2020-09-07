@@ -3,7 +3,7 @@ import Name from './Name'
 import Canvas from './Canvas'
 import ColorPicker from './ColorPicker'
 import RefreshButton from './RefreshButton'
-import WindowSize from './WindowSize'
+import useWindowSize from './useWindowSize'
 import randomColor from 'randomcolor'
 
 export default function Paint() {
@@ -20,7 +20,13 @@ export default function Paint() {
     }, [])
     useEffect(getColors, [])
     
-    const headerRef = useRef({ offsetHeight: 0 })
+    const [visible, setVisible] = useState(false)
+    let timeoutId = useRef()
+    const [windowWidth, windowHeight] = useWindowSize(() => {
+        setVisible(true)
+        clearTimeout(timeoutId.current)
+        timeoutId.current = setTimeout(() => setVisible(false), 500)
+    })
     
     return (
         <div className="app">
@@ -40,10 +46,12 @@ export default function Paint() {
         {activeColor && (
             <Canvas
             color={activeColor}
-            height={window.innerHeight - headerRef.current.offsetHeight}
+            height={window.innerHeight}
             />
         )}
-        <WindowSize />
+        <div className={`window-size ${visible ? '' : 'hidden'}`}>
+            {windowWidth} x {windowHeight}
+        </div>
         </div>
     )
 }
