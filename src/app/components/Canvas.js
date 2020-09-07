@@ -13,7 +13,7 @@ export default function Canvas(props) {
         ctx.current = canvasRef.current.getContext('2d')
     }, [])
     
-    const [windowWidth, windowHeight] = useWindowSize(() => {
+    useWindowSize(() => {
         setWidth(window.innerWidth)
         setHeight(window.innerHeight)
     })
